@@ -1,26 +1,199 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  --color-cream: #f5f0e8;
+  --color-beige: #ede5d5;
+  --color-gold: #b8941f;
+  --color-gold-light: #d4af37;
+  --color-gold-pale: #f0e6c0;
+  --color-olive: #4a5c2b;
+  --color-olive-light: #6b7f45;
+  --color-olive-dark: #2e3a1a;
+  --color-green-dark: #3a4c1e;
+  --color-text-dark: #1a1a1a;
+  --color-text-muted: #6b6b5a;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --animate-fade-in-up: fadeInUp 0.8s ease-out forwards;
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 
+:root {
+  --cream: #f5f0e8;
+  --cream-dark: #ede5d5;
+  --gold: #b8941f;
+  --gold-light: #d4af37;
+  --gold-pale: #f0e6c0;
+  --olive: #4a5c2b;
+  --olive-light: #6b7f45;
+  --olive-dark: #2e3a1a;
+  --text-dark: #1a1a1a;
+  --text-muted: #6b6b5a;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Montserrat", sans-serif;
+  background-color: var(--cream);
+  color: var(--text-dark);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Cormorant Garamond", serif;
+}
+
+/* Gold divider */
+.gold-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 0 auto;
+}
+
+/* Section padding */
+.section-padding {
+  padding: 5rem 1.5rem;
+}
+
+/* Buttons */
+.btn-gold {
+  display: inline-block;
+  background: linear-gradient(
+    135deg,
+    var(--gold),
+    var(--gold-light),
+    var(--gold)
+  );
+  background-size: 200% auto;
+  color: white;
+  padding: 0.85rem 2.2rem;
+  border-radius: 2px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-gold:hover {
+  background-position: right center;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(184, 148, 31, 0.35);
+}
+
+.btn-outline {
+  display: inline-block;
+  background: transparent;
+  color: var(--gold);
+  padding: 0.8rem 2.2rem;
+  border-radius: 2px;
+  border: 1.5px solid var(--gold);
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+
+.btn-outline:hover {
+  background: var(--gold);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(184, 148, 31, 0.3);
+}
+
+/* Card hover */
+.service-card {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(74, 92, 43, 0.12);
+}
+
+/* Navbar active */
+.nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Form inputs */
+.form-input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: white;
+  border: 1px solid #d8cfb8;
+  border-radius: 2px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+  outline: none;
+}
+.form-input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(184, 148, 31, 0.1);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gold-light);
+  border-radius: 3px;
 }
