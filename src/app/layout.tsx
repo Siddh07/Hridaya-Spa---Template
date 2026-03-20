@@ -14,10 +14,9 @@ export const metadata: Metadata = {
     "spa Kathmandu",
     "wellness center Tokha",
     "massage center Nepal",
-    "Thai massage Kathmandu",
+    "Chandan oil  massage Kathmandu",
     "body massage Kathmandu",
     "Hridaya spa",
-    "deep tissue massage",
     "Moroccan bath Kathmandu",
   ],
   openGraph: {

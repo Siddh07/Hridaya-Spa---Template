@@ -152,12 +152,11 @@ export default function Footer() {
               }}
             >
               {[
-                "Thai Massage",
-                "Deep Tissue Massage",
+                "Chandan oil  Massage",
                 "Ayurvedic Oil Massage",
                 "Four Hand Massage",
                 "Moroccan Bath",
-                "Coffee Body Massage",
+                "Normal Oil Body Massage",
               ].map((s) => (
                 <li
                   key={s}

@@ -13,8 +13,8 @@ const slides = [
   {
     image:
       "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=800&q=80",
-    tag: "Thai Ritual",
-    title: "Thai Massage",
+    tag: "Chandan oil  Ritual",
+    title: "Chandan oil  Massage",
     subtitle: "Energize body & soul",
   },
   {

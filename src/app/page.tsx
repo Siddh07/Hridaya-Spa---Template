@@ -1,4 +1,5 @@
 import HeroCarousel from "@/components/HeroCarousel";
+import QuoteCarousel from "@/components/QuoteCarousel";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -12,13 +13,13 @@ export const metadata: Metadata = {
 const featuredServices = [
   {
     icon: "✦",
-    name: "Ayurvedic Oil Massage",
+    name: "Normal Oil Massage",
     desc: "Ancient healing with therapeutic oils to restore body balance and promote deep relaxation.",
     price: "NPR 1,500",
   },
   {
     icon: "✦",
-    name: "Thai Massage",
+    name: "Chandan oil  Massage",
     desc: "Traditional stretching and acupressure to energize your body and improve flexibility.",
     price: "NPR 2,000",
   },
@@ -30,7 +31,7 @@ const featuredServices = [
   },
   {
     icon: "✦",
-    name: "Coffee Body Massage",
+    name: "Ayurvedic Oil Massage",
     desc: "Exfoliating and rejuvenating coffee-infused body treatment that leaves skin glowing.",
     price: "NPR 2,500",
   },
@@ -39,12 +40,6 @@ const featuredServices = [
     name: "Moroccan Bath",
     desc: "Deep cleansing ritual for silky smooth, radiant and deeply nourished skin.",
     price: "NPR 1,200",
-  },
-  {
-    icon: "✦",
-    name: "Deep Tissue Massage",
-    desc: "Targeted therapy for muscle tension and chronic pain relief through firm pressure.",
-    price: "NPR 2,000",
   },
 ];
 
@@ -265,7 +260,7 @@ export default function HomePage() {
             >
               {[
                 { num: "15+", label: "Rituals" },
-                { num: "5★", label: "Rated Spa" },
+                { num: "4.5★", label: "Rated Spa" },
                 { num: "100%", label: "Natural" },
               ].map((stat) => (
                 <div key={stat.label}>
@@ -315,71 +310,7 @@ export default function HomePage() {
       </section>
 
       {/* ===== ABOUT QUOTE STRIP ===== */}
-      <section
-        style={{
-          background: "var(--olive-dark)",
-          padding: "5rem 1.5rem",
-          textAlign: "center",
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
-        {/* Subtle radial glow */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            backgroundImage:
-              "radial-gradient(circle at center, rgba(208,175,55,0.07) 0%, transparent 60%)",
-          }}
-        />
-        <div
-          style={{
-            maxWidth: "800px",
-            margin: "0 auto",
-            position: "relative",
-          }}
-        >
-          <p
-            style={{
-              fontFamily: "Montserrat, sans-serif",
-              fontSize: "0.65rem",
-              letterSpacing: "0.3em",
-              textTransform: "uppercase",
-              color: "rgba(212,175,55,0.6)",
-              marginBottom: "1.5rem",
-            }}
-          >
-            ✦ Our Philosophy
-          </p>
-          <blockquote
-            style={{
-              fontFamily: "Cormorant Garamond, serif",
-              fontSize: "clamp(1.6rem, 3vw, 2.5rem)",
-              fontStyle: "italic",
-              fontWeight: 300,
-              lineHeight: 1.6,
-              color: "var(--cream)",
-              marginBottom: "2rem",
-            }}
-          >
-            &ldquo;Hridaya — meaning{" "}
-            <span style={{ color: "var(--gold-light)", fontWeight: 400 }}>
-              heart
-            </span>{" "}
-            in Sanskrit — is our promise to treat every guest with warmth, care,
-            and genuine healing intention from the bottom of our hearts.&rdquo;
-          </blockquote>
-          <div
-            style={{
-              width: "3rem",
-              height: "1px",
-              background: "rgba(212,175,55,0.3)",
-              margin: "0 auto",
-            }}
-          />
-        </div>
-      </section>
+      <QuoteCarousel />
 
       {/* ===== FEATURED SERVICES ===== */}
       <section
