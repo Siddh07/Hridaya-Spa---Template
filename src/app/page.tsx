@@ -15,13 +15,13 @@ const featuredServices = [
     icon: "✦",
     name: "Normal Oil Massage",
     desc: "Ancient healing with therapeutic oils to restore body balance and promote deep relaxation.",
-    price: "NPR 1,500",
+    price: "NPR 1,000",
   },
   {
     icon: "✦",
     name: "Chandan oil  Massage",
     desc: "Traditional stretching and acupressure to energize your body and improve flexibility.",
-    price: "NPR 2,000",
+    price: "NPR 1,400",
   },
   {
     icon: "✦",
@@ -33,7 +33,7 @@ const featuredServices = [
     icon: "✦",
     name: "Ayurvedic Oil Massage",
     desc: "Exfoliating and rejuvenating coffee-infused body treatment that leaves skin glowing.",
-    price: "NPR 2,500",
+    price: "NPR 1,500",
   },
   {
     icon: "✦",

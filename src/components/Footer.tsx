@@ -210,7 +210,9 @@ export default function Footer() {
                     lineHeight: 1.7,
                   }}
                 >
-                  Greenland Chowk, Tokha Road,
+                  Greenland Chowk, Tokha Road &
+                  <br />
+                  Opening Soon at Opposite building to Buddha Air, Pulchowk Rd,
                   <br />
                   Kathmandu, Nepal
                 </p>

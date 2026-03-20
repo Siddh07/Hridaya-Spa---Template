@@ -8,7 +8,10 @@ export async function POST(request: Request) {
 
     // Validation
     if (!name || !phone || !service || !date || !time) {
-      return NextResponse.json({ error: "Please fill in all required fields." }, { status: 400 });
+      return NextResponse.json(
+        { error: "Please fill in all required fields." },
+        { status: 400 },
+      );
     }
 
     // Create transporter
@@ -54,19 +57,27 @@ export async function POST(request: Request) {
                   ["💆 Service Requested", service],
                   ["📅 Preferred Date", date],
                   ["🕐 Preferred Time", time],
-                ].map(([label, value]) => `
+                ]
+                  .map(
+                    ([label, value]) => `
                   <tr>
                     <td style="padding: 10px 0; color: #6B6B5A; font-family: Arial, sans-serif; font-size: 13px; font-weight: bold; width: 160px; vertical-align: top;">${label}</td>
                     <td style="padding: 10px 0; color: #1A1A1A; font-family: Arial, sans-serif; font-size: 14px;">${value}</td>
                   </tr>
                   <tr><td colspan="2" style="border-bottom: 1px solid #EDE5D5;"></td></tr>
-                `).join("")}
-                ${message ? `
+                `,
+                  )
+                  .join("")}
+                ${
+                  message
+                    ? `
                   <tr>
                     <td style="padding: 10px 0; color: #6B6B5A; font-family: Arial, sans-serif; font-size: 13px; font-weight: bold; vertical-align: top;">📝 Special Notes</td>
                     <td style="padding: 10px 0; color: #1A1A1A; font-family: Arial, sans-serif; font-size: 14px; line-height: 1.6;">${message}</td>
                   </tr>
-                ` : ""}
+                `
+                    : ""
+                }
               </table>
               
               <div style="background: #F5F0E8; border-left: 3px solid #B8941F; padding: 15px; margin-top: 25px; border-radius: 2px;">
@@ -79,7 +90,7 @@ export async function POST(request: Request) {
             <!-- Footer -->
             <div style="background: #F5F0E8; padding: 20px; text-align: center; border-top: 1px solid #EDE5D5;">
               <p style="font-family: Arial, sans-serif; font-size: 12px; color: #6B6B5A; margin: 0;">
-                Hridaya Wellness & Spa Center | Greenland Chowk, Tokha Road, Kathmandu | +977 9805011700
+                Hridaya Wellness & Spa Center | Greenland Chowk, Tokha Road, Kathmandu & Opening Soon at Opposite building to Buddha Air, Pulchowk Rd | +977 9805011700
               </p>
             </div>
           </div>
@@ -125,9 +136,18 @@ export async function POST(request: Request) {
       });
     }
 
-    return NextResponse.json({ success: true, message: "Appointment request sent successfully!" });
+    return NextResponse.json({
+      success: true,
+      message: "Appointment request sent successfully!",
+    });
   } catch (error) {
     console.error("Email error:", error);
-    return NextResponse.json({ error: "Failed to send email. Please call us directly at +977 9805011700." }, { status: 500 });
+    return NextResponse.json(
+      {
+        error:
+          "Failed to send email. Please call us directly at +977 9805011700.",
+      },
+      { status: 500 },
+    );
   }
 }

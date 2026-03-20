@@ -1,6 +1,6 @@
 "use client";
 
-import { useForm, ValidationError } from "@formspree/react";
+import { useState } from "react";
 
 const services = [
   "Normal Oil Massage – NPR 1,000",
@@ -20,8 +20,31 @@ const services = [
   "Waxing (Both) – NPR 1,000",
 ];
 
+type Status = "idle" | "loading" | "success" | "error";
+
 export default function BookingForm() {
-  const [state, handleSubmit] = useForm("xjgazvwk");
+  const [status, setStatus] = useState<Status>("idle");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus("loading");
+
+    const formData = new FormData(e.currentTarget);
+    formData.append("access_key", "23091a18-8b27-4daa-aa1b-b655f040a609");
+    formData.append("subject", "New Appointment Request – Hridaya Spa");
+    formData.append("from_name", "Hridaya Wellness & Spa Website");
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await res.json();
+      setStatus(data.success ? "success" : "error");
+    } catch {
+      setStatus("error");
+    }
+  };
 
   const inputStyle: React.CSSProperties = {
     width: "100%",
@@ -47,7 +70,7 @@ export default function BookingForm() {
     marginBottom: "0.5rem",
   };
 
-  if (state.succeeded) {
+  if (status === "success") {
     return (
       <div
         style={{
@@ -109,7 +132,6 @@ export default function BookingForm() {
             style={inputStyle}
             className="form-input"
           />
-          <ValidationError prefix="Name" field="name" errors={state.errors} />
         </div>
         <div>
           <label htmlFor="phone" style={labelStyle}>
@@ -123,11 +145,6 @@ export default function BookingForm() {
             placeholder="+977 98XXXXXXXX"
             style={inputStyle}
             className="form-input"
-          />
-          <ValidationError
-            prefix="Phone"
-            field="phone"
-            errors={state.errors}
           />
         </div>
       </div>
@@ -145,7 +162,6 @@ export default function BookingForm() {
           style={inputStyle}
           className="form-input"
         />
-        <ValidationError prefix="Email" field="email" errors={state.errors} />
       </div>
 
       {/* Service */}
@@ -167,11 +183,6 @@ export default function BookingForm() {
             </option>
           ))}
         </select>
-        <ValidationError
-          prefix="Service"
-          field="service"
-          errors={state.errors}
-        />
       </div>
 
       {/* Date + Time */}
@@ -197,7 +208,6 @@ export default function BookingForm() {
             style={inputStyle}
             className="form-input"
           />
-          <ValidationError prefix="Date" field="date" errors={state.errors} />
         </div>
         <div>
           <label htmlFor="time" style={labelStyle}>
@@ -229,7 +239,6 @@ export default function BookingForm() {
               </option>
             ))}
           </select>
-          <ValidationError prefix="Time" field="time" errors={state.errors} />
         </div>
       </div>
 
@@ -246,15 +255,10 @@ export default function BookingForm() {
           style={{ ...inputStyle, resize: "vertical", minHeight: "100px" }}
           className="form-input"
         />
-        <ValidationError
-          prefix="Message"
-          field="message"
-          errors={state.errors}
-        />
       </div>
 
-      {/* Global form error */}
-      {state.errors && state.errors.length > 0 && (
+      {/* Error */}
+      {status === "error" && (
         <div
           style={{
             background: "rgba(180,30,30,0.06)",
@@ -265,7 +269,8 @@ export default function BookingForm() {
           }}
         >
           <p style={{ color: "#8B2020", fontSize: "0.85rem" }}>
-            ⚠️ Something went wrong. Please check your details and try again.
+            ⚠️ Something went wrong. Please try again or call us directly at
+            +977 9805011700.
           </p>
         </div>
       )}
@@ -273,17 +278,17 @@ export default function BookingForm() {
       <button
         type="submit"
         className="btn-gold"
-        disabled={state.submitting}
+        disabled={status === "loading"}
         style={{
           width: "100%",
           fontSize: "0.82rem",
           padding: "1rem",
           letterSpacing: "0.15em",
-          opacity: state.submitting ? 0.7 : 1,
-          cursor: state.submitting ? "not-allowed" : "pointer",
+          opacity: status === "loading" ? 0.7 : 1,
+          cursor: status === "loading" ? "not-allowed" : "pointer",
         }}
       >
-        {state.submitting ? "Sending Request..." : "Confirm Appointment Request"}
+        {status === "loading" ? "Sending Request..." : "Confirm Appointment Request"}
       </button>
 
       <p
