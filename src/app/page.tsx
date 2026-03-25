@@ -14,31 +14,32 @@ const featuredServices = [
   {
     icon: "✦",
     name: "Normal Oil Massage",
-    desc: "Ancient healing with therapeutic oils to restore body balance and promote deep relaxation.",
+    desc: "A relaxing full-body massage with natural oils to ease stress, relax muscles, and refresh your body.",
     price: "NPR 1,000",
   },
   {
     icon: "✦",
-    name: "Chandan oil  Massage",
-    desc: "Traditional stretching and acupressure to energize your body and improve flexibility.",
+    name: "Chandan Oil Massage",
+    desc: "A luxurious massage with Chandan oil — cooling, healing, and deeply restorative. Now available for the first time in Nepal at Hridaya Spa.",
     price: "NPR 1,400",
+    firstInNepal: true,
   },
   {
     icon: "✦",
     name: "Four Hand Massage",
-    desc: "Synchronized luxury massage by two therapists simultaneously for ultimate indulgence.",
+    desc: "Two therapists working together for a perfectly coordinated massage — ultimate luxury and relaxation.",
     price: "NPR 2,000",
   },
   {
     icon: "✦",
     name: "Ayurvedic Oil Massage",
-    desc: "Exfoliating and rejuvenating coffee-infused body treatment that leaves skin glowing.",
+    desc: "Based on ancient Ayurvedic traditions, using herbal oils to balance your body and promote wellness.",
     price: "NPR 1,500",
   },
   {
     icon: "✦",
     name: "Moroccan Bath",
-    desc: "Deep cleansing ritual for silky smooth, radiant and deeply nourished skin.",
+    desc: "Authentic hammam ritual with black soap and kessa glove to cleanse, smooth, and brighten your skin.",
     price: "NPR 1,200",
   },
 ];
@@ -47,12 +48,12 @@ const whyUs = [
   {
     num: "01",
     title: "Experienced Therapists",
-    desc: "Our certified therapists bring years of expertise in traditional and modern wellness techniques.",
+    desc: "Our well-trained therapists give massages that help you relax and feel refreshed.",
   },
   {
     num: "02",
-    title: "Serene Environment",
-    desc: "Step into a tranquil sanctuary carefully designed to calm your senses from the moment you arrive.",
+    title: "Friendly Environment",
+    desc: "Our staff is warm and welcoming so you feel at home from the moment you arrive",
   },
   {
     num: "03",
@@ -192,7 +193,7 @@ export default function HomePage() {
                 letterSpacing: "-0.01em",
               }}
             >
-              Rediscover
+              Hridaya
               <br />
               <span
                 style={{
@@ -201,9 +202,10 @@ export default function HomePage() {
                   color: "var(--gold)",
                 }}
               >
-                Balance
+                Healing
               </span>
-              <br />& Serenity.
+              <br />
+              begins with touch.
             </h1>
 
             {/* Divider */}
@@ -228,8 +230,8 @@ export default function HomePage() {
                 marginBottom: "2.5rem",
               }}
             >
-              Escape the city&apos;s rush. Experience our signature treatments
-              designed to restore your harmony and awaken your purest vitality.
+              Take a break from your busy life. Our treatments help you relax
+              your body and mind.
             </p>
 
             {/* Buttons */}
@@ -259,9 +261,10 @@ export default function HomePage() {
               }}
             >
               {[
-                { num: "15+", label: "Rituals" },
-                { num: "4.5★", label: "Rated Spa" },
-                { num: "100%", label: "Natural" },
+                { num: "5,000+", label: "Happy Customers" },
+                { num: "4.6★", label: "Google Reviews" },
+                { num: "100%", label: "Natural Products" },
+                { num: "5+", label: "Expert Therapists" },
               ].map((stat) => (
                 <div key={stat.label}>
                   <p
@@ -421,7 +424,9 @@ export default function HomePage() {
                 className="service-card"
                 style={{
                   background: "white",
-                  border: "1px solid rgba(184,148,31,0.12)",
+                  border: service.firstInNepal
+                    ? "1px solid rgba(184,148,31,0.45)"
+                    : "1px solid rgba(184,148,31,0.12)",
                   borderRadius: "4px",
                   padding: "2.2rem",
                   position: "relative",
@@ -441,6 +446,30 @@ export default function HomePage() {
                     borderRadius: "4px 0 0 4px",
                   }}
                 />
+
+                {/* First in Nepal badge */}
+                {service.firstInNepal && (
+                  <div style={{ marginBottom: "0.7rem" }}>
+                    <span
+                      style={{
+                        background: "linear-gradient(135deg, var(--gold), var(--gold-light))",
+                        color: "white",
+                        fontSize: "0.58rem",
+                        fontFamily: "Montserrat, sans-serif",
+                        fontWeight: 700,
+                        letterSpacing: "0.18em",
+                        textTransform: "uppercase",
+                        padding: "0.22rem 0.7rem",
+                        borderRadius: "20px",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "0.3rem",
+                      }}
+                    >
+                      ✦ First in Nepal
+                    </span>
+                  </div>
+                )}
 
                 <p
                   style={{
@@ -629,13 +658,36 @@ export default function HomePage() {
                   lineHeight: 1.85,
                   color: "rgba(245,240,232,0.65)",
                   maxWidth: "380px",
-                  marginBottom: "2.5rem",
+                  marginBottom: "2rem",
                 }}
               >
-                We go beyond standard therapies. Our approach weaves together
-                ancient wisdom, premium natural elements, and profound respect
-                for your personal wellness journey.
+                Trusted by <strong style={{ color: "var(--gold-light)" }}>5,000+ customers</strong> — our professional therapists,
+                natural products, and a truly relaxing environment will help you feel better from the very first visit.
               </p>
+              {/* Mini trust badges */}
+              <div style={{ display: "flex", gap: "1.2rem", flexWrap: "wrap", marginBottom: "2.5rem" }}>
+                {[
+                  { icon: "🏆", label: "5,000+ Customers" },
+                  { icon: "🌿", label: "100% Natural Oils" },
+                  { icon: "⭐", label: "4.6 Google Rating" },
+                ].map((b) => (
+                  <div
+                    key={b.label}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "0.4rem",
+                      background: "rgba(212,175,55,0.08)",
+                      border: "1px solid rgba(212,175,55,0.2)",
+                      borderRadius: "20px",
+                      padding: "0.3rem 0.8rem",
+                    }}
+                  >
+                    <span style={{ fontSize: "0.85rem" }}>{b.icon}</span>
+                    <span style={{ fontFamily: "Montserrat, sans-serif", fontSize: "0.62rem", letterSpacing: "0.1em", color: "rgba(245,240,232,0.8)", textTransform: "uppercase", fontWeight: 500 }}>{b.label}</span>
+                  </div>
+                ))}
+              </div>
               <div
                 style={{
                   width: "4rem",
@@ -702,6 +754,60 @@ export default function HomePage() {
         `}</style>
       </section>
 
+      {/* ===== TESTIMONIALS ===== */}
+      <section
+        style={{
+          background: "var(--cream)",
+          padding: "6rem 1.5rem",
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage:
+              "radial-gradient(circle at 30% 50%, rgba(184,148,31,0.04) 0%, transparent 60%)",
+            pointerEvents: "none",
+          }}
+        />
+        <div style={{ maxWidth: "1200px", margin: "0 auto", position: "relative" }}>
+          <div style={{ textAlign: "center", marginBottom: "4rem" }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "1rem", marginBottom: "1.5rem" }}>
+              <span style={{ display: "block", width: "2rem", height: "1px", background: "var(--gold)" }} />
+              <span style={{ fontFamily: "Montserrat, sans-serif", fontSize: "0.65rem", letterSpacing: "0.3em", textTransform: "uppercase", color: "var(--olive-light)", fontWeight: 500 }}>
+                Client Stories
+              </span>
+              <span style={{ display: "block", width: "2rem", height: "1px", background: "var(--gold)" }} />
+            </div>
+            <h2 style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "clamp(2rem, 5vw, 3.2rem)", fontWeight: 300, color: "var(--olive-dark)" }}>
+              What Our{" "}
+              <span style={{ fontStyle: "italic", color: "var(--gold)" }}>Guests Say</span>
+            </h2>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2rem" }}>
+            {[
+              { name: "Priya Sharma", rating: 5, review: "The Ayurvedic oil massage was absolutely divine. The therapists are highly skilled and the ambiance is so peaceful. I left feeling completely renewed — will definitely be back!", service: "Ayurvedic Oil Massage" },
+              { name: "Rajesh Thapa", rating: 5, review: "Tried the Four Hand Massage and it was beyond expectations. Both therapists were perfectly synchronized. Hridaya truly delivers a premium experience in Kathmandu.", service: "Four Hand Massage" },
+              { name: "Sita Maharjan", rating: 5, review: "The Moroccan Bath left my skin incredibly smooth and glowing. The staff is warm, professional and truly caring. Best spa experience I've had!", service: "Moroccan Bath" },
+            ].map((t) => (
+              <div key={t.name} className="service-card" style={{ background: "white", border: "1px solid rgba(184,148,31,0.12)", borderRadius: "4px", padding: "2rem", position: "relative" }}>
+                <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "3px", background: "linear-gradient(90deg, var(--gold), var(--olive-light))", borderRadius: "4px 4px 0 0" }} />
+                <div style={{ color: "var(--gold)", fontSize: "1rem", marginBottom: "1rem", letterSpacing: "3px" }}>{"★".repeat(t.rating)}</div>
+                <p style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "1.1rem", fontStyle: "italic", color: "var(--text-dark)", lineHeight: 1.75, marginBottom: "1.5rem" }}>
+                  &ldquo;{t.review}&rdquo;
+                </p>
+                <div style={{ width: "2rem", height: "1px", background: "rgba(184,148,31,0.3)", marginBottom: "1rem" }} />
+                <p style={{ fontFamily: "Montserrat, sans-serif", fontSize: "0.82rem", fontWeight: 600, color: "var(--olive-dark)", marginBottom: "0.2rem" }}>{t.name}</p>
+                <p style={{ fontFamily: "Montserrat, sans-serif", fontSize: "0.65rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--gold)" }}>{t.service}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ===== FINAL CTA ===== */}
       <section
         style={{
@@ -765,7 +871,7 @@ export default function HomePage() {
               marginTop: "0.5rem",
             }}
           >
-            Ready for Tranquility?
+            Ready to Relax and Feel Better?
           </p>
           <h2
             style={{

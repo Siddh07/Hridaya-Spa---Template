@@ -4,45 +4,46 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Services & Pricing — Massage & Spa Treatments",
   description:
-    "Explore our full range of spa services at Hridaya Wellness Center. From relaxing oil massages to premium Chandan oil  massage, Moroccan Bath, and more. Transparent pricing in Kathmandu.",
+    "Explore our full range of spa services at Hridaya Wellness Center. From relaxing oil massages to premium Chandan Oil massage, Moroccan Bath, and more. Transparent pricing in Kathmandu.",
 };
 
 const massageServices = [
   {
     name: "Normal Oil Massage",
     price: 1000,
-    desc: "A soothing full-body massage with premium natural oil, designed to ease stress, relax muscles, and nourish the skin.",
+    desc: "A relaxing full-body massage with natural oils to ease stress, relax muscles, and refresh your body.",
   },
 
   {
     name: "Dry Massage",
     price: 1000,
-    desc: "A soothing full-body massage with premium natural oil, designed to ease stress, relax muscles, and nourish the skin.",
+    desc: "A gentle massage without oil to relax your body, relieve tension, and calm your mind.",
   },
   {
     name: "Jasmine / Lavender / Coconut Oil",
     price: 1200,
-    desc: "Experience the calming aroma of jasmine, lavender, or coconut oil in a therapeutic massage that soothes both body and mind.",
+    desc: "Calming aroma massage using jasmine, lavender, or coconut oil to soothe your body and mind.",
   },
   {
-    name: "Chandan (Sandalwood) Oil",
+    name: "Chandan Oil Massage",
     price: 1400,
-    desc: "A luxurious massage with sacred sandalwood oil, known for its cooling and anti-inflammatory properties that promote deep healing.",
+    desc: "A luxurious massage with sacred Chandan (Sandalwood) oil — known for its cooling, healing and anti-inflammatory properties. Experience this rare wellness ritual, now available for the first time in Nepal.",
+    firstInNepal: true,
   },
   {
     name: "Lotion Massage",
     price: 1500,
-    desc: "A silky-smooth massage with a rich moisturizing lotion that hydrates and softens skin while relieving tension.",
+    desc: "A smooth massage using rich lotion to hydrate your skin and relieve tension",
   },
   {
     name: "Cream Massage",
     price: 1500,
-    desc: "Indulge in a nurturing massage using a premium cream for deep hydration, skin rejuvenation, and complete relaxation.",
+    desc: "Deeply nourishing massage with premium cream for soft skin and full relaxation.",
   },
   {
     name: "Ayurvedic Oil Massage",
     price: 1500,
-    desc: "Rooted in ancient Ayurvedic traditions, this therapeutic massage uses herbal oils to balance the body's energies and promote holistic wellness.",
+    desc: "Based on ancient Ayurvedic traditions, using herbal oils to balance your body and promote wellness.",
   },
 ];
 
@@ -50,27 +51,27 @@ const premiumServices = [
   {
     name: "Four Hand Massage",
     price: 2000,
-    desc: "An extraordinary synchronized massage performed by two therapists with perfectly coordinated movements — a uniquely luxurious experience.",
+    desc: "Two therapists working together for a perfectly coordinated massage — ultimate luxury and relaxation.",
   },
   {
     name: "Deep Tissue Massage",
     price: 2000,
-    desc: "An extraordinary synchronized massage performed by two therapists with perfectly coordinated movements — a uniquely luxurious experience.",
+    desc: "Specialized massage to release deep muscle tension and relieve stiffness.",
   },
   {
     name: "Thai Massage",
     price: 2000,
-    desc: "A rejuvenating treatment using fresh coffee grounds to exfoliate, firm, and energize the skin, leaving it glowing and revitalized.",
+    desc: "Traditional stretching massage that improves flexibility, energy, and relieves body fatigue.",
   },
   {
     name: "Coffee Body Massage",
     price: 2000,
-    desc: "A rejuvenating treatment using fresh coffee grounds to exfoliate, firm, and energize the skin, leaving it glowing and revitalized.",
+    desc: "Energizing massage with coffee grounds to exfoliate, firm, and refresh your skin.",
   },
   {
     name: "Normal Massage + Body Scrub + Shower Assistance",
     price: 1500,
-    desc: "The ultimate pampering package — a relaxing massage followed by an exfoliating body scrub and professional shower assistance for total renewal.",
+    desc: "A complete pampering package — relaxing massage, body scrub, and shower assistance for full renewal.",
   },
   {
     name: "Moroccan Bath",
@@ -229,7 +230,7 @@ export default function ServicesPage() {
                 className="service-card"
                 style={{
                   background: "white",
-                  border: "1px solid rgba(184,148,31,0.12)",
+                  border: s.firstInNepal ? "1px solid rgba(184,148,31,0.45)" : "1px solid rgba(184,148,31,0.12)",
                   borderRadius: "4px",
                   padding: "1.8rem",
                   position: "relative",
@@ -247,6 +248,28 @@ export default function ServicesPage() {
                     borderRadius: "4px 0 0 4px",
                   }}
                 />
+                {s.firstInNepal && (
+                  <div style={{ marginBottom: "0.7rem" }}>
+                    <span
+                      style={{
+                        background: "linear-gradient(135deg, var(--gold), var(--gold-light))",
+                        color: "white",
+                        fontSize: "0.6rem",
+                        fontFamily: "Montserrat, sans-serif",
+                        fontWeight: 700,
+                        letterSpacing: "0.18em",
+                        textTransform: "uppercase",
+                        padding: "0.25rem 0.7rem",
+                        borderRadius: "20px",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "0.3rem",
+                      }}
+                    >
+                      ✦ First in Nepal
+                    </span>
+                  </div>
+                )}
                 <div
                   style={{
                     display: "flex",

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import MapEmbed from "@/components/MapEmbed";
 
 export const metadata: Metadata = {
   title: "Contact Us — Hridaya Wellness & Spa, Tokha Road Kathmandu",
@@ -217,25 +218,7 @@ export default function ContactPage() {
             </p>
           </div>
 
-          <div
-            style={{
-              borderRadius: "4px",
-              overflow: "hidden",
-              border: "1px solid rgba(184,148,31,0.2)",
-              boxShadow: "0 10px 50px rgba(0,0,0,0.08)",
-            }}
-          >
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3531.0312383342225!2d85.32211147546876!3d27.747182476159768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb193d712b5f23%3A0x322c15050713e31d!2sHridaya%20Wellness%20and%20Spa!5e0!3m2!1sen!2snp!4v1773988361320!5m2!1sen!2snp"
-              width="100%"
-              height="420"
-              style={{ border: 0, display: "block" }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Hridaya Wellness & Spa Center Location - Tokha Road Kathmandu"
-            />
-          </div>
+          <MapEmbed />
 
           <div style={{ textAlign: "center", marginTop: "2rem" }}>
             <a

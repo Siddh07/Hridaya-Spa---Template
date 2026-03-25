@@ -66,8 +66,8 @@ export default function Navbar() {
           <Image
             src="/logo1.png"
             alt="Hridaya Wellness & Spa Center Logo"
-            width={150}
-            height={100}
+            width={185}
+            height={120}
             style={{ objectFit: "contain" }}
           />
           {/* <div>
@@ -225,6 +225,20 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
+          <Link
+            href="/book-appointment"
+            onClick={() => setMenuOpen(false)}
+            className="btn-gold"
+            style={{
+              display: "block",
+              textAlign: "center",
+              marginTop: "1rem",
+              fontSize: "0.78rem",
+              padding: "0.85rem 1.5rem",
+            }}
+          >
+            Book Now
+          </Link>
         </div>
       )}
 

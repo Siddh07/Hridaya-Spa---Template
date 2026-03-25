@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useCallback } from "react";
+import { useRef, useState, useCallback, useEffect } from "react";
 
 const quotes = [
   {
@@ -10,8 +10,8 @@ const quotes = [
         <span style={{ color: "var(--gold-light)", fontWeight: 400 }}>
           heart
         </span>{" "}
-        in Sanskrit — is our promise to treat every guest with warmth, care,
-        and genuine healing intention from the bottom of our hearts.&rdquo;
+        in Sanskrit — is our promise to treat every guest with warmth, care, and
+        genuine healing intention from the bottom of our hearts.&rdquo;
       </>
     ),
     label: "Founding Principle",
@@ -23,7 +23,7 @@ const quotes = [
         <span style={{ color: "var(--gold-light)", fontWeight: 400 }}>
           presence
         </span>{" "}
-        — the quiet art of being fully here for another soul.&rdquo;
+        — hridaya healing begin with touch.&rdquo;
       </>
     ),
     label: "On Presence",
@@ -31,7 +31,8 @@ const quotes = [
   {
     quote: (
       <>
-        &ldquo;We believe beauty is not a luxury — it is a form of{" "}
+        &ldquo;You step in with stress and walk out with peace — it is a form
+        of{" "}
         <span style={{ color: "var(--gold-light)", fontWeight: 400 }}>
           self-respect
         </span>
@@ -40,35 +41,12 @@ const quotes = [
     ),
     label: "On Beauty",
   },
-  {
-    quote: (
-      <>
-        &ldquo;Every ritual we offer carries the memory of{" "}
-        <span style={{ color: "var(--gold-light)", fontWeight: 400 }}>
-          ancient wisdom
-        </span>
-        , remixed gently for the world you live in today.&rdquo;
-      </>
-    ),
-    label: "On Tradition",
-  },
-  {
-    quote: (
-      <>
-        &ldquo;We do not simply tend to the body — we tend to the{" "}
-        <span style={{ color: "var(--gold-light)", fontWeight: 400 }}>
-          whole person
-        </span>
-        , as they are in this very moment.&rdquo;
-      </>
-    ),
-    label: "On Wholeness",
-  },
 ];
 
 export default function QuoteCarousel() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const goTo = useCallback((index: number) => {
     const track = trackRef.current;
@@ -79,8 +57,33 @@ export default function QuoteCarousel() {
     setActive(index);
   }, []);
 
-  const prev = () => goTo(Math.max(0, active - 1));
-  const next = () => goTo(Math.min(quotes.length - 1, active + 1));
+  const startAutoPlay = useCallback(() => {
+    if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
+      setActive((prev) => {
+        const next = (prev + 1) % quotes.length;
+        const track = trackRef.current;
+        if (track) {
+          const slide = track.children[next] as HTMLElement;
+          if (slide) track.scrollTo({ left: slide.offsetLeft, behavior: "smooth" });
+        }
+        return next;
+      });
+    }, 5000);
+  }, []);
+
+  useEffect(() => {
+    startAutoPlay();
+    return () => { if (timerRef.current) clearInterval(timerRef.current); };
+  }, [startAutoPlay]);
+
+  const manualGoTo = useCallback((index: number) => {
+    goTo(index);
+    startAutoPlay();
+  }, [goTo, startAutoPlay]);
+
+  const prev = () => manualGoTo(Math.max(0, active - 1));
+  const next = () => manualGoTo(Math.min(quotes.length - 1, active + 1));
 
   const handleScroll = () => {
     const track = trackRef.current;
@@ -265,7 +268,8 @@ export default function QuoteCarousel() {
             borderRadius: "50%",
             border: "1px solid rgba(212,175,55,0.3)",
             background: "transparent",
-            color: active === 0 ? "rgba(212,175,55,0.2)" : "rgba(212,175,55,0.7)",
+            color:
+              active === 0 ? "rgba(212,175,55,0.2)" : "rgba(212,175,55,0.7)",
             fontSize: "1.1rem",
             cursor: active === 0 ? "default" : "pointer",
             display: "flex",
@@ -283,7 +287,7 @@ export default function QuoteCarousel() {
           {quotes.map((_, i) => (
             <button
               key={i}
-              onClick={() => goTo(i)}
+              onClick={() => manualGoTo(i)}
               aria-label={`Go to quote ${i + 1}`}
               style={{
                 width: i === active ? "1.8rem" : "0.4rem",
@@ -296,7 +300,8 @@ export default function QuoteCarousel() {
                 border: "none",
                 padding: 0,
                 cursor: "pointer",
-                transition: "width 0.35s cubic-bezier(0.4,0,0.2,1), background 0.25s",
+                transition:
+                  "width 0.35s cubic-bezier(0.4,0,0.2,1), background 0.25s",
               }}
             />
           ))}

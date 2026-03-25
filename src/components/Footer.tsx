@@ -152,7 +152,7 @@ export default function Footer() {
               }}
             >
               {[
-                "Chandan oil  Massage",
+                "Chandan Oil Massage",
                 "Ayurvedic Oil Massage",
                 "Four Hand Massage",
                 "Moroccan Bath",
@@ -194,15 +194,6 @@ export default function Footer() {
                   alignItems: "flex-start",
                 }}
               >
-                <span
-                  style={{
-                    color: "var(--gold-light)",
-                    marginTop: "2px",
-                    fontSize: "1rem",
-                  }}
-                >
-                  📍
-                </span>
                 <p
                   style={{
                     color: "rgba(245,240,232,0.7)",
@@ -210,11 +201,9 @@ export default function Footer() {
                     lineHeight: 1.7,
                   }}
                 >
-                  Greenland Chowk, Tokha Road &
+                  📍 Greenland Chowk, Tokha Road
                   <br />
-                  Opening Soon at Opposite building to Buddha Air, Pulchowk Rd,
-                  <br />
-                  Kathmandu, Nepal
+                  📍 Pulchowk Rd, Jawalakhel
                 </p>
               </div>
               <div

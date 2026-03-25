@@ -197,3 +197,14 @@ h5 {
   background: var(--gold-light);
   border-radius: 3px;
 }
+
+/* Scroll-triggered animations */
+.aos-item {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.aos-item.aos-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

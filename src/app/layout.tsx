@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
+import React from "react";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://hridayaspa.com"),
   title: {
     default: "Hridaya Wellness & Spa Center | Tokha Road, Kathmandu",
     template: "%s | Hridaya Wellness & Spa",
@@ -14,7 +17,7 @@ export const metadata: Metadata = {
     "spa Kathmandu",
     "wellness center Tokha",
     "massage center Nepal",
-    "Chandan oil  massage Kathmandu",
+    "Chandan oil massage Kathmandu",
     "body massage Kathmandu",
     "Hridaya spa",
     "Moroccan bath Kathmandu",
@@ -26,6 +29,20 @@ export const metadata: Metadata = {
     title: "Hridaya Wellness & Spa Center | Tokha Road, Kathmandu",
     description:
       "Premium massage therapies and holistic wellness services in Kathmandu. Experience tranquility at Hridaya Spa.",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Hridaya Wellness & Spa Center",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Hridaya Wellness & Spa Center | Kathmandu",
+    description: "Premium massage therapies and holistic wellness in Kathmandu.",
+    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,
@@ -44,6 +61,7 @@ export default function RootLayout({
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <WhatsAppButton />
       </body>
     </html>
   );

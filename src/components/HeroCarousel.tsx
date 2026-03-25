@@ -4,29 +4,25 @@ import { useState, useEffect, useCallback } from "react";
 
 const slides = [
   {
-    image:
-      "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80",
+    image: "/carousel/slide1.jpg",
     tag: "Signature Treatment",
     title: "Ayurvedic Oil Massage",
     subtitle: "Ancient wisdom, modern serenity",
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=800&q=80",
-    tag: "Chandan oil  Ritual",
-    title: "Chandan oil  Massage",
-    subtitle: "Energize body & soul",
+    image: "/carousel/slide2.jpg",
+    tag: "Chandan Oil Ritual",
+    title: "Chandan Oil Massage",
+    subtitle: "First in Nepal — now at Hridaya",
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=800&q=80",
+    image: "/carousel/slide3.jpg",
     tag: "Luxury Experience",
     title: "Four Hand Massage",
     subtitle: "Ultimate indulgence awaits",
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=800&q=80",
+    image: "/carousel/slide4.jpg",
     tag: "Body Treatment",
     title: "Moroccan Bath",
     subtitle: "Radiant, silky smooth skin",
