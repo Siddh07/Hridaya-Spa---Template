@@ -38,8 +38,8 @@ export default function Footer() {
               <Image
                 src="/logo1.png"
                 alt="Hridaya Logo"
-                width={45}
-                height={40}
+                width={70}
+                height={60}
                 style={{
                   objectFit: "contain",
                   filter:
@@ -79,8 +79,7 @@ export default function Footer() {
                 maxWidth: "260px",
               }}
             >
-              A sanctuary of peace and healing, dedicated to restoring balance
-              to your body, mind, and soul through ancient wellness traditions.
+              At Hridaya healing begins with touch
             </p>
           </div>
 

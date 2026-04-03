@@ -50,7 +50,7 @@ export default function Navbar() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          height: "75px",
+          height: "90px",
         }}
       >
         {/* Logo */}
@@ -66,8 +66,8 @@ export default function Navbar() {
           <Image
             src="/logo1.png"
             alt="Hridaya Wellness & Spa Center Logo"
-            width={185}
-            height={120}
+            width={240}
+            height={150}
             style={{ objectFit: "contain" }}
           />
           {/* <div>

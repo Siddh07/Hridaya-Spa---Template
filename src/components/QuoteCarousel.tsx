@@ -17,28 +17,11 @@ const quotes = [
     label: "Founding Principle",
   },
   {
-    quote: (
-      <>
-        &ldquo;True healing begins not with the hands, but with{" "}
-        <span style={{ color: "var(--gold-light)", fontWeight: 400 }}>
-          presence
-        </span>{" "}
-        — hridaya healing begin with touch.&rdquo;
-      </>
-    ),
+    quote: <>&ldquo;At Hridaya healing begins with touch&rdquo;</>,
     label: "On Presence",
   },
   {
-    quote: (
-      <>
-        &ldquo;You step in with stress and walk out with peace — it is a form
-        of{" "}
-        <span style={{ color: "var(--gold-light)", fontWeight: 400 }}>
-          self-respect
-        </span>
-        , a quiet ritual of returning to yourself.&rdquo;
-      </>
-    ),
+    quote: <>&ldquo;Step in with stress and walk out with peace&rdquo;</>,
     label: "On Beauty",
   },
 ];
@@ -65,7 +48,8 @@ export default function QuoteCarousel() {
         const track = trackRef.current;
         if (track) {
           const slide = track.children[next] as HTMLElement;
-          if (slide) track.scrollTo({ left: slide.offsetLeft, behavior: "smooth" });
+          if (slide)
+            track.scrollTo({ left: slide.offsetLeft, behavior: "smooth" });
         }
         return next;
       });
@@ -74,13 +58,18 @@ export default function QuoteCarousel() {
 
   useEffect(() => {
     startAutoPlay();
-    return () => { if (timerRef.current) clearInterval(timerRef.current); };
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
   }, [startAutoPlay]);
 
-  const manualGoTo = useCallback((index: number) => {
-    goTo(index);
-    startAutoPlay();
-  }, [goTo, startAutoPlay]);
+  const manualGoTo = useCallback(
+    (index: number) => {
+      goTo(index);
+      startAutoPlay();
+    },
+    [goTo, startAutoPlay],
+  );
 
   const prev = () => manualGoTo(Math.max(0, active - 1));
   const next = () => manualGoTo(Math.min(quotes.length - 1, active + 1));

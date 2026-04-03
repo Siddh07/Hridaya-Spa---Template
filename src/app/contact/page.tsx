@@ -251,10 +251,7 @@ export default function ContactPage() {
               marginBottom: "1.2rem",
             }}
           >
-            Ready for a{" "}
-            <em style={{ color: "var(--gold-light)", fontStyle: "italic" }}>
-              Blissful Experience?
-            </em>
+            Ready to Relax and Feel Better?
           </h2>
           <div
             style={{

@@ -754,60 +754,6 @@ export default function HomePage() {
         `}</style>
       </section>
 
-      {/* ===== TESTIMONIALS ===== */}
-      <section
-        style={{
-          background: "var(--cream)",
-          padding: "6rem 1.5rem",
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            backgroundImage:
-              "radial-gradient(circle at 30% 50%, rgba(184,148,31,0.04) 0%, transparent 60%)",
-            pointerEvents: "none",
-          }}
-        />
-        <div style={{ maxWidth: "1200px", margin: "0 auto", position: "relative" }}>
-          <div style={{ textAlign: "center", marginBottom: "4rem" }}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "1rem", marginBottom: "1.5rem" }}>
-              <span style={{ display: "block", width: "2rem", height: "1px", background: "var(--gold)" }} />
-              <span style={{ fontFamily: "Montserrat, sans-serif", fontSize: "0.65rem", letterSpacing: "0.3em", textTransform: "uppercase", color: "var(--olive-light)", fontWeight: 500 }}>
-                Client Stories
-              </span>
-              <span style={{ display: "block", width: "2rem", height: "1px", background: "var(--gold)" }} />
-            </div>
-            <h2 style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "clamp(2rem, 5vw, 3.2rem)", fontWeight: 300, color: "var(--olive-dark)" }}>
-              What Our{" "}
-              <span style={{ fontStyle: "italic", color: "var(--gold)" }}>Guests Say</span>
-            </h2>
-          </div>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2rem" }}>
-            {[
-              { name: "Priya Sharma", rating: 5, review: "The Ayurvedic oil massage was absolutely divine. The therapists are highly skilled and the ambiance is so peaceful. I left feeling completely renewed — will definitely be back!", service: "Ayurvedic Oil Massage" },
-              { name: "Rajesh Thapa", rating: 5, review: "Tried the Four Hand Massage and it was beyond expectations. Both therapists were perfectly synchronized. Hridaya truly delivers a premium experience in Kathmandu.", service: "Four Hand Massage" },
-              { name: "Sita Maharjan", rating: 5, review: "The Moroccan Bath left my skin incredibly smooth and glowing. The staff is warm, professional and truly caring. Best spa experience I've had!", service: "Moroccan Bath" },
-            ].map((t) => (
-              <div key={t.name} className="service-card" style={{ background: "white", border: "1px solid rgba(184,148,31,0.12)", borderRadius: "4px", padding: "2rem", position: "relative" }}>
-                <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "3px", background: "linear-gradient(90deg, var(--gold), var(--olive-light))", borderRadius: "4px 4px 0 0" }} />
-                <div style={{ color: "var(--gold)", fontSize: "1rem", marginBottom: "1rem", letterSpacing: "3px" }}>{"★".repeat(t.rating)}</div>
-                <p style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "1.1rem", fontStyle: "italic", color: "var(--text-dark)", lineHeight: 1.75, marginBottom: "1.5rem" }}>
-                  &ldquo;{t.review}&rdquo;
-                </p>
-                <div style={{ width: "2rem", height: "1px", background: "rgba(184,148,31,0.3)", marginBottom: "1rem" }} />
-                <p style={{ fontFamily: "Montserrat, sans-serif", fontSize: "0.82rem", fontWeight: 600, color: "var(--olive-dark)", marginBottom: "0.2rem" }}>{t.name}</p>
-                <p style={{ fontFamily: "Montserrat, sans-serif", fontSize: "0.65rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--gold)" }}>{t.service}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ===== FINAL CTA ===== */}
       <section
         style={{
