@@ -255,9 +255,10 @@ export default function HomePage() {
             <div
               style={{
                 display: "flex",
-                gap: "3rem",
+                gap: "3.5rem",
                 paddingTop: "2.5rem",
                 borderTop: "1px solid rgba(184,148,31,0.15)",
+                alignItems: "center",
               }}
             >
               {[
@@ -301,6 +302,49 @@ export default function HomePage() {
             style={{ width: "100%", height: "100%" }}
           >
             <HeroCarousel />
+
+            <div
+              style={{
+                marginTop: "2rem",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.75rem",
+                background: "rgba(184,148,31,0.08)",
+                border: "1px solid rgba(184,148,31,0.3)",
+                borderRadius: "4px",
+                padding: "0.9rem 1.4rem",
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: "Montserrat, sans-serif",
+                  fontSize: "0.6rem",
+                  letterSpacing: "0.2em",
+                  textTransform: "uppercase",
+                  color: "var(--gold)",
+                  fontWeight: 600,
+                }}
+              >
+                Hridaya Signature ⭐
+              </span>
+              <span
+                style={{
+                  width: "1px",
+                  height: "1rem",
+                  background: "rgba(184,148,31,0.3)",
+                }}
+              />
+              <span
+                style={{
+                  fontFamily: "Cormorant Garamond, serif",
+                  fontSize: "1.2rem",
+                  fontWeight: 600,
+                  color: "var(--olive-dark)",
+                }}
+              >
+                Chandan Oil Massage — 1400 (Get 1 FREE Session on 5 Sessions)
+              </span>
+            </div>
           </div>
         </div>
 
@@ -452,7 +496,8 @@ export default function HomePage() {
                   <div style={{ marginBottom: "0.7rem" }}>
                     <span
                       style={{
-                        background: "linear-gradient(135deg, var(--gold), var(--gold-light))",
+                        background:
+                          "linear-gradient(135deg, var(--gold), var(--gold-light))",
                         color: "white",
                         fontSize: "0.58rem",
                         fontFamily: "Montserrat, sans-serif",
@@ -661,11 +706,23 @@ export default function HomePage() {
                   marginBottom: "2rem",
                 }}
               >
-                Trusted by <strong style={{ color: "var(--gold-light)" }}>5,000+ customers</strong> — our professional therapists,
-                natural products, and a truly relaxing environment will help you feel better from the very first visit.
+                Trusted by{" "}
+                <strong style={{ color: "var(--gold-light)" }}>
+                  5,000+ customers
+                </strong>{" "}
+                — our professional therapists, natural products, and a truly
+                relaxing environment will help you feel better from the very
+                first visit.
               </p>
               {/* Mini trust badges */}
-              <div style={{ display: "flex", gap: "1.2rem", flexWrap: "wrap", marginBottom: "2.5rem" }}>
+              <div
+                style={{
+                  display: "flex",
+                  gap: "1.2rem",
+                  flexWrap: "wrap",
+                  marginBottom: "2.5rem",
+                }}
+              >
                 {[
                   { icon: "🏆", label: "5,000+ Customers" },
                   { icon: "🌿", label: "100% Natural Oils" },
@@ -684,7 +741,18 @@ export default function HomePage() {
                     }}
                   >
                     <span style={{ fontSize: "0.85rem" }}>{b.icon}</span>
-                    <span style={{ fontFamily: "Montserrat, sans-serif", fontSize: "0.62rem", letterSpacing: "0.1em", color: "rgba(245,240,232,0.8)", textTransform: "uppercase", fontWeight: 500 }}>{b.label}</span>
+                    <span
+                      style={{
+                        fontFamily: "Montserrat, sans-serif",
+                        fontSize: "0.62rem",
+                        letterSpacing: "0.1em",
+                        color: "rgba(245,240,232,0.8)",
+                        textTransform: "uppercase",
+                        fontWeight: 500,
+                      }}
+                    >
+                      {b.label}
+                    </span>
                   </div>
                 ))}
               </div>

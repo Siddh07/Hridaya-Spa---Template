@@ -5,7 +5,7 @@ import { useState } from "react";
 const services = [
   "Normal Oil Massage – NPR 1,000",
   "Dry Massage – NPR 1,000",
-  "Jasmine/Lavender/Coconut Oil – NPR 1,200",
+  "Jasmine/Lavender/Coconut Oil – NPR 1,500",
   "Chandan Oil Massage – NPR 1,400",
   "Lotion Massage – NPR 1,500",
   "Cream Massage – NPR 1,500",
@@ -13,16 +13,20 @@ const services = [
   "Four Hand Massage – NPR 2,000",
   "Deep Tissue Massage – NPR 2,000",
   "Thai Massage – NPR 2,000",
-  "Coffee Body Massage – NPR 2,000",
   "Normal Massage + Body Scrub + Shower – NPR 1,500",
   "Moroccan Bath – NPR 1,200",
   "Massage with Moroccan Bath – NPR 2,000",
-  "Waxing (Under Arms) – NPR 500",
+  "Hridaya Wellness Special Package – NPR 4,000",
+  "Waxing (Underarms) – NPR 500",
   "Waxing (Bikini) – NPR 800",
-  "Waxing (Both) – NPR 1,000",
+  "Waxing (Underarms + Bikini) – NPR 1,000",
 ];
 
-type FormErrors = Partial<Record<"name" | "phone" | "service" | "date" | "time", string>>;
+const locations = ["Greenland Chowk, Tokha Road", "Pulchowk Rd, Jawalakhel"];
+
+type FormErrors = Partial<
+  Record<"name" | "phone" | "service" | "location" | "date" | "time", string>
+>;
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -32,11 +36,18 @@ export default function BookingForm() {
 
   const validate = (formData: FormData): FormErrors => {
     const errs: FormErrors = {};
-    if (!String(formData.get("name") ?? "").trim()) errs.name = "Full name is required.";
-    if (!String(formData.get("phone") ?? "").trim()) errs.phone = "Phone number is required.";
-    if (!String(formData.get("service") ?? "").trim()) errs.service = "Please select a service.";
-    if (!String(formData.get("date") ?? "").trim()) errs.date = "Please choose a date.";
-    if (!String(formData.get("time") ?? "").trim()) errs.time = "Please select a time.";
+    if (!String(formData.get("name") ?? "").trim())
+      errs.name = "Full name is required.";
+    if (!String(formData.get("phone") ?? "").trim())
+      errs.phone = "Phone number is required.";
+    if (!String(formData.get("location") ?? "").trim())
+      errs.location = "Please select a location.";
+    if (!String(formData.get("service") ?? "").trim())
+      errs.service = "Please select a service.";
+    if (!String(formData.get("date") ?? "").trim())
+      errs.date = "Please choose a date.";
+    if (!String(formData.get("time") ?? "").trim())
+      errs.time = "Please select a time.";
     return errs;
   };
 
@@ -77,13 +88,21 @@ export default function BookingForm() {
     fontSize: "0.88rem",
     color: "var(--text-dark)",
     outline: "none",
-    boxShadow: field && errors[field] ? "0 0 0 3px rgba(192,57,43,0.1)" : undefined,
+    boxShadow:
+      field && errors[field] ? "0 0 0 3px rgba(192,57,43,0.1)" : undefined,
     transition: "border-color 0.3s ease, box-shadow 0.3s ease",
   });
 
   const errMsg = (field: keyof FormErrors) =>
     errors[field] ? (
-      <p style={{ color: "#C0392B", fontSize: "0.72rem", marginTop: "0.3rem", fontFamily: "Montserrat, sans-serif" }}>
+      <p
+        style={{
+          color: "#C0392B",
+          fontSize: "0.72rem",
+          marginTop: "0.3rem",
+          fontFamily: "Montserrat, sans-serif",
+        }}
+      >
         {errors[field]}
       </p>
     ) : null;
@@ -149,7 +168,9 @@ export default function BookingForm() {
         className="form-grid"
       >
         <div>
-          <label htmlFor="name" style={labelStyle}>Full Name *</label>
+          <label htmlFor="name" style={labelStyle}>
+            Full Name *
+          </label>
           <input
             id="name"
             name="name"
@@ -162,7 +183,9 @@ export default function BookingForm() {
           {errMsg("name")}
         </div>
         <div>
-          <label htmlFor="phone" style={labelStyle}>Phone Number *</label>
+          <label htmlFor="phone" style={labelStyle}>
+            Phone Number *
+          </label>
           <input
             id="phone"
             name="phone"
@@ -191,22 +214,56 @@ export default function BookingForm() {
         />
       </div>
 
-      {/* Service */}
-      <div style={{ marginBottom: "1.2rem" }}>
-        <label htmlFor="service" style={labelStyle}>Select Service *</label>
-        <select
-          id="service"
-          name="service"
-          style={{ ...inputStyle("service"), cursor: "pointer" }}
-          className="form-input"
-          onChange={() => setErrors((p) => ({ ...p, service: undefined }))}
-        >
-          <option value="">— Choose a treatment —</option>
-          {services.map((s) => (
-            <option key={s} value={s}>{s}</option>
-          ))}
-        </select>
-        {errMsg("service")}
+      {/* Location + Service */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "1.2rem",
+          marginBottom: "1.2rem",
+        }}
+        className="form-grid"
+      >
+        <div>
+          <label htmlFor="location" style={labelStyle}>
+            Select Location *
+          </label>
+          <select
+            id="location"
+            name="location"
+            style={{ ...inputStyle("location"), cursor: "pointer" }}
+            className="form-input"
+            onChange={() => setErrors((p) => ({ ...p, location: undefined }))}
+          >
+            <option value="">— Choose a branch —</option>
+            {locations.map((l) => (
+              <option key={l} value={l}>
+                {l}
+              </option>
+            ))}
+          </select>
+          {errMsg("location")}
+        </div>
+        <div>
+          <label htmlFor="service" style={labelStyle}>
+            Select Service *
+          </label>
+          <select
+            id="service"
+            name="service"
+            style={{ ...inputStyle("service"), cursor: "pointer" }}
+            className="form-input"
+            onChange={() => setErrors((p) => ({ ...p, service: undefined }))}
+          >
+            <option value="">— Choose a treatment —</option>
+            {services.map((s) => (
+              <option key={s} value={s}>
+                {s}
+              </option>
+            ))}
+          </select>
+          {errMsg("service")}
+        </div>
       </div>
 
       {/* Date + Time */}
@@ -220,7 +277,9 @@ export default function BookingForm() {
         className="form-grid"
       >
         <div>
-          <label htmlFor="date" style={labelStyle}>Preferred Date *</label>
+          <label htmlFor="date" style={labelStyle}>
+            Preferred Date *
+          </label>
           <input
             id="date"
             name="date"
@@ -233,7 +292,9 @@ export default function BookingForm() {
           {errMsg("date")}
         </div>
         <div>
-          <label htmlFor="time" style={labelStyle}>Preferred Time *</label>
+          <label htmlFor="time" style={labelStyle}>
+            Preferred Time *
+          </label>
           <select
             id="time"
             name="time"
@@ -242,8 +303,22 @@ export default function BookingForm() {
             onChange={() => setErrors((p) => ({ ...p, time: undefined }))}
           >
             <option value="">— Select time —</option>
-            {["9:00 AM","10:00 AM","11:00 AM","12:00 PM","1:00 PM","2:00 PM","3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM"].map((t) => (
-              <option key={t} value={t}>{t}</option>
+            {[
+              "9:00 AM",
+              "10:00 AM",
+              "11:00 AM",
+              "12:00 PM",
+              "1:00 PM",
+              "2:00 PM",
+              "3:00 PM",
+              "4:00 PM",
+              "5:00 PM",
+              "6:00 PM",
+              "7:00 PM",
+            ].map((t) => (
+              <option key={t} value={t}>
+                {t}
+              </option>
             ))}
           </select>
           {errMsg("time")}
@@ -252,7 +327,9 @@ export default function BookingForm() {
 
       {/* Message */}
       <div style={{ marginBottom: "2rem" }}>
-        <label htmlFor="message" style={labelStyle}>Special Requests / Notes</label>
+        <label htmlFor="message" style={labelStyle}>
+          Special Requests / Notes
+        </label>
         <textarea
           id="message"
           name="message"
@@ -294,7 +371,9 @@ export default function BookingForm() {
           cursor: status === "loading" ? "not-allowed" : "pointer",
         }}
       >
-        {status === "loading" ? "Sending Request..." : "Confirm Appointment Request"}
+        {status === "loading"
+          ? "Sending Request..."
+          : "Confirm Appointment Request"}
       </button>
 
       <p

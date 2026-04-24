@@ -263,6 +263,8 @@ export default function Footer() {
             }}
           >
             Greenland Chowk, Tokha Road, Kathmandu
+            <br />
+             Pulchowk Rd, Jawalakhel
           </p>
         </div>
       </div>

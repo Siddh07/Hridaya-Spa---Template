@@ -188,7 +188,7 @@ export default function BookAppointmentPage() {
                     >
                       Greenland Chowk, Tokha Road
                       <br />
-                      Kathmandu, Nepal
+                       Pulchowk Rd, Jawalakhel
                     </p>
                   </div>
                 </div>

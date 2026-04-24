@@ -21,14 +21,8 @@ const massageServices = [
   },
   {
     name: "Jasmine / Lavender / Coconut Oil",
-    price: 1200,
+    price: 1500,
     desc: "Calming aroma massage using jasmine, lavender, or coconut oil to soothe your body and mind.",
-  },
-  {
-    name: "Chandan Oil Massage",
-    price: 1400,
-    desc: "A luxurious massage with sacred Chandan (Sandalwood) oil — known for its cooling, healing and anti-inflammatory properties. Experience this rare wellness ritual, now available for the first time in Nepal.",
-    firstInNepal: true,
   },
   {
     name: "Lotion Massage",
@@ -44,6 +38,16 @@ const massageServices = [
     name: "Ayurvedic Oil Massage",
     price: 1500,
     desc: "Based on ancient Ayurvedic traditions, using herbal oils to balance your body and promote wellness.",
+  },
+];
+
+const signatureServices = [
+  {
+    name: "Chandan Oil Massage",
+    price: 1400,
+    desc: "A luxurious massage with sacred Chandan (Sandalwood) oil — known for its cooling, healing and anti-inflammatory properties. Experience this rare wellness ritual, now available for the first time in Nepal. (Get 1 FREE Chandan Oil Massage on 5 Sessions)",
+    firstInNepal: true,
+    promo: "Buy 5 Get 1 Free",
   },
 ];
 
@@ -64,19 +68,14 @@ const premiumServices = [
     desc: "Traditional stretching massage that improves flexibility, energy, and relieves body fatigue.",
   },
   {
-    name: "Coffee Body Massage",
-    price: 2000,
-    desc: "Energizing massage with coffee grounds to exfoliate, firm, and refresh your skin.",
+    name: "Moroccan Bath",
+    price: 1200,
+    desc: "An authentic hammam ritual using black soap and kessa glove to deeply cleanse, smooth, and brighten the skin from head to toe.",
   },
   {
     name: "Normal Massage + Body Scrub + Shower Assistance",
     price: 1500,
     desc: "A complete pampering package — relaxing massage, body scrub, and shower assistance for full renewal.",
-  },
-  {
-    name: "Moroccan Bath",
-    price: 1200,
-    desc: "An authentic hammam ritual using black soap and kessa glove to deeply cleanse, smooth, and brighten the skin from head to toe.",
   },
   {
     name: "Massage with Moroccan Bath",
@@ -85,10 +84,19 @@ const premiumServices = [
   },
 ];
 
+const wellnessPackages = [
+  {
+    name: "Hridaya Wellness Special Package",
+    price: 4000,
+    desc: "The ultimate wellness journey: Deep Tissue or Thai Massage + Chandan Oil + Moroccan Bath for total rejuvenation.",
+    items: ["Deep Tissue or Thai Massage", "Chandan Oil", "Moroccan Bath"],
+  },
+];
+
 const waxingServices = [
-  { name: "Under Arms Waxing", price: 500 },
-  { name: "Bikini Waxing", price: 800 },
-  { name: "Under Arms + Bikini (Both)", price: 1000 },
+  { name: "Underarms", price: 500 },
+  { name: "Bikini", price: 800 },
+  { name: "Underarms + Bikini", price: 1000 },
 ];
 
 export default function ServicesPage() {
@@ -177,10 +185,9 @@ export default function ServicesPage() {
             fontStyle: "italic",
           }}
         >
-          ✦ If Shower Assistance By Staff Is Required for Any Standard Massage,
-          An Additional{" "}
-          <strong style={{ color: "var(--gold)" }}>NPR 500</strong> Will Be
-          Charged.
+          ✦ If Shower Assistance By Staff Is Needed for above services, An
+          Additional <strong style={{ color: "var(--gold)" }}>NPR 500</strong>{" "}
+          Will Be Charged.
         </p>
       </div>
 
@@ -201,7 +208,7 @@ export default function ServicesPage() {
                 marginBottom: "0.8rem",
               }}
             >
-              ✦ Standard Treatments
+              ✦ Essential Care
             </p>
             <h2
               style={{
@@ -212,7 +219,7 @@ export default function ServicesPage() {
                 marginBottom: "0.8rem",
               }}
             >
-              Massage Therapies
+              Massage Types
             </h2>
             <div className="gold-divider" />
           </div>
@@ -230,7 +237,7 @@ export default function ServicesPage() {
                 className="service-card"
                 style={{
                   background: "white",
-                  border: s.firstInNepal ? "1px solid rgba(184,148,31,0.45)" : "1px solid rgba(184,148,31,0.12)",
+                  border: "1px solid rgba(184,148,31,0.12)",
                   borderRadius: "4px",
                   padding: "1.8rem",
                   position: "relative",
@@ -248,28 +255,6 @@ export default function ServicesPage() {
                     borderRadius: "4px 0 0 4px",
                   }}
                 />
-                {s.firstInNepal && (
-                  <div style={{ marginBottom: "0.7rem" }}>
-                    <span
-                      style={{
-                        background: "linear-gradient(135deg, var(--gold), var(--gold-light))",
-                        color: "white",
-                        fontSize: "0.6rem",
-                        fontFamily: "Montserrat, sans-serif",
-                        fontWeight: 700,
-                        letterSpacing: "0.18em",
-                        textTransform: "uppercase",
-                        padding: "0.25rem 0.7rem",
-                        borderRadius: "20px",
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: "0.3rem",
-                      }}
-                    >
-                      ✦ First in Nepal
-                    </span>
-                  </div>
-                )}
                 <div
                   style={{
                     display: "flex",
@@ -311,6 +296,111 @@ export default function ServicesPage() {
                 >
                   {s.desc}
                 </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Signature Services */}
+      <section className="section-padding" style={{ background: "white" }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <p
+              style={{
+                fontFamily: "Montserrat",
+                fontSize: "0.72rem",
+                letterSpacing: "0.25em",
+                textTransform: "uppercase",
+                color: "var(--gold)",
+                marginBottom: "0.8rem",
+              }}
+            >
+              ✦ Signature Rituals
+            </p>
+            <h2
+              style={{
+                fontFamily: "Cormorant Garamond, serif",
+                fontSize: "clamp(2rem, 4vw, 2.8rem)",
+                color: "var(--olive-dark)",
+                fontWeight: 400,
+                marginBottom: "0.8rem",
+              }}
+            >
+              Hridaya Signature ⭐
+            </h2>
+            <div className="gold-divider" />
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            {signatureServices.map((s) => (
+              <div
+                key={s.name}
+                className="service-card"
+                style={{
+                  background: "var(--cream)",
+                  border: "1px solid rgba(184,148,31,0.45)",
+                  borderRadius: "4px",
+                  padding: "2.5rem",
+                  position: "relative",
+                  maxWidth: "600px",
+                  textAlign: "center",
+                }}
+              >
+                <div style={{ marginBottom: "1rem" }}>
+                  <span
+                    style={{
+                      background:
+                        "linear-gradient(135deg, var(--gold), var(--gold-light))",
+                      color: "white",
+                      fontSize: "0.65rem",
+                      fontFamily: "Montserrat, sans-serif",
+                      fontWeight: 700,
+                      letterSpacing: "0.2em",
+                      textTransform: "uppercase",
+                      padding: "0.3rem 1rem",
+                      borderRadius: "20px",
+                    }}
+                  >
+                    ✦ {s.promo}
+                  </span>
+                </div>
+                <h3
+                  style={{
+                    fontFamily: "Cormorant Garamond, serif",
+                    fontSize: "1.8rem",
+                    color: "var(--olive-dark)",
+                    fontWeight: 500,
+                    marginBottom: "1rem",
+                  }}
+                >
+                  {s.name}
+                </h3>
+                <p
+                  style={{
+                    fontSize: "0.95rem",
+                    color: "var(--text-muted)",
+                    lineHeight: 1.8,
+                    marginBottom: "1.5rem",
+                  }}
+                >
+                  {s.desc}
+                </p>
+                <span
+                  style={{
+                    fontFamily: "Cormorant Garamond, serif",
+                    fontSize: "1.6rem",
+                    color: "var(--gold)",
+                    fontWeight: 600,
+                  }}
+                >
+                  NPR {s.price.toLocaleString()}
+                </span>
               </div>
             ))}
           </div>
@@ -442,6 +532,154 @@ export default function ServicesPage() {
                 >
                   NPR {s.price.toLocaleString()}
                 </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Wellness Special Package */}
+      <section
+        className="section-padding"
+        style={{
+          background: "var(--olive-dark)",
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            opacity: 0.05,
+            backgroundImage: "url('/logo1.png')",
+            backgroundSize: "200px",
+            backgroundRepeat: "repeat",
+          }}
+        />
+        <div
+          style={{ maxWidth: "1100px", margin: "0 auto", position: "relative" }}
+        >
+          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <p
+              style={{
+                fontFamily: "Montserrat",
+                fontSize: "0.72rem",
+                letterSpacing: "0.25em",
+                textTransform: "uppercase",
+                color: "var(--gold)",
+                marginBottom: "0.8rem",
+              }}
+            >
+              ✦ The Ultimate Ritual
+            </p>
+            <h2
+              style={{
+                fontFamily: "Cormorant Garamond, serif",
+                fontSize: "clamp(2rem, 4vw, 2.8rem)",
+                color: "var(--cream)",
+                fontWeight: 400,
+                marginBottom: "0.8rem",
+              }}
+            >
+              Hridaya Wellness Special
+            </h2>
+            <div className="gold-divider" />
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            {wellnessPackages.map((s) => (
+              <div
+                key={s.name}
+                style={{
+                  background: "rgba(255,255,255,0.03)",
+                  border: "1px solid rgba(212,175,55,0.3)",
+                  borderRadius: "8px",
+                  padding: "3rem",
+                  maxWidth: "800px",
+                  width: "100%",
+                  textAlign: "center",
+                  backdropFilter: "blur(10px)",
+                }}
+              >
+                <h3
+                  style={{
+                    fontFamily: "Cormorant Garamond, serif",
+                    fontSize: "2.2rem",
+                    color: "var(--gold-light)",
+                    fontWeight: 400,
+                    marginBottom: "1.5rem",
+                  }}
+                >
+                  {s.name}
+                </h3>
+                <p
+                  style={{
+                    fontSize: "1rem",
+                    color: "rgba(245,240,232,0.8)",
+                    lineHeight: 1.8,
+                    marginBottom: "2rem",
+                  }}
+                >
+                  {s.desc}
+                </p>
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    justifyContent: "center",
+                    gap: "1rem",
+                    marginBottom: "2.5rem",
+                  }}
+                >
+                  {s.items.map((item) => (
+                    <span
+                      key={item}
+                      style={{
+                        background: "rgba(212,175,55,0.1)",
+                        border: "1px solid rgba(212,175,55,0.2)",
+                        color: "var(--gold-light)",
+                        padding: "0.5rem 1rem",
+                        borderRadius: "4px",
+                        fontSize: "0.85rem",
+                        fontFamily: "Montserrat",
+                      }}
+                    >
+                      ✦ {item}
+                    </span>
+                  ))}
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: "Cormorant Garamond, serif",
+                      fontSize: "2.5rem",
+                      color: "var(--cream)",
+                      fontWeight: 600,
+                      marginBottom: "1.5rem",
+                    }}
+                  >
+                    NPR {s.price.toLocaleString()}
+                  </span>
+                  <Link
+                    href="/book-appointment"
+                    className="btn-gold"
+                    style={{ padding: "1rem 3rem" }}
+                  >
+                    Experience Absolute Bliss
+                  </Link>
+                </div>
               </div>
             ))}
           </div>

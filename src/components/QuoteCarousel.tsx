@@ -6,12 +6,12 @@ const quotes = [
   {
     quote: (
       <>
-        &ldquo;Hridaya — meaning{" "}
+        &ldquo;Hridaya —{" "}
         <span style={{ color: "var(--gold-light)", fontWeight: 400 }}>
           heart
         </span>{" "}
-        in Sanskrit — is our promise to treat every guest with warmth, care, and
-        genuine healing intention from the bottom of our hearts.&rdquo;
+        in Sanskrit — our promise to heal every guest with genuine
+        warmth.&rdquo;
       </>
     ),
     label: "Founding Principle",
@@ -86,23 +86,12 @@ export default function QuoteCarousel() {
     <section
       style={{
         background: "var(--olive-dark)",
-        padding: "6rem 0",
+        padding: "4rem 0 3rem",
         textAlign: "center",
         position: "relative",
         overflow: "hidden",
       }}
     >
-      {/* Radial glow */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          backgroundImage:
-            "radial-gradient(circle at center, rgba(208,175,55,0.07) 0%, transparent 60%)",
-          pointerEvents: "none",
-        }}
-      />
-
       {/* Eyebrow */}
       <p
         style={{
@@ -111,7 +100,7 @@ export default function QuoteCarousel() {
           letterSpacing: "0.3em",
           textTransform: "uppercase",
           color: "rgba(212,175,55,0.6)",
-          marginBottom: "3.5rem",
+          marginBottom: "2.5rem",
           position: "relative",
         }}
       >
@@ -175,33 +164,57 @@ export default function QuoteCarousel() {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
+                justifyContent: "center",
+                minHeight: "clamp(140px, 22vh, 200px)", // ← smaller height
+                position: "relative", // ← FIX: traps the deco glyphs inside this slide
+                overflow: "hidden", // ← FIX: clips them so they don't bleed out
               }}
             >
               {/* Decorative open-quote glyph */}
-              <span
+              <div
                 style={{
+                  position: "absolute",
+                  top: "-1rem",
+                  left: "clamp(0.5rem, 3vw, 2rem)",
                   fontFamily: "Cormorant Garamond, serif",
-                  fontSize: "6rem",
-                  lineHeight: 0.6,
-                  color: "rgba(212,175,55,0.12)",
-                  display: "block",
-                  marginBottom: "2rem",
+                  fontSize: "8rem",
+                  lineHeight: 1,
+                  color: "rgba(212,175,55,0.06)",
                   userSelect: "none",
+                  pointerEvents: "none",
                 }}
               >
                 &ldquo;
-              </span>
+              </div>
+
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: "-1rem",
+                  right: "clamp(0.5rem, 3vw, 2rem)",
+                  fontFamily: "Cormorant Garamond, serif",
+                  fontSize: "8rem",
+                  lineHeight: 1,
+                  color: "rgba(212,175,55,0.06)",
+                  userSelect: "none",
+                  pointerEvents: "none",
+                }}
+              >
+                &rdquo;
+              </div>
 
               <blockquote
                 style={{
                   fontFamily: "Cormorant Garamond, serif",
-                  fontSize: "clamp(1.55rem, 2.8vw, 2.4rem)",
+                  fontSize: "clamp(1.3rem, 2.4vw, 2rem)",
                   fontStyle: "italic",
                   fontWeight: 300,
-                  lineHeight: 1.7,
+                  lineHeight: 1.65,
                   color: "var(--cream)",
-                  margin: "0 0 2rem",
-                  maxWidth: "720px",
+                  margin: "0 0 1.4rem",
+                  maxWidth: "680px",
+                  position: "relative",
+                  zIndex: 1,
                 }}
               >
                 {item.quote}
@@ -213,7 +226,7 @@ export default function QuoteCarousel() {
                   width: "2rem",
                   height: "1px",
                   background: "rgba(212,175,55,0.4)",
-                  marginBottom: "1.2rem",
+                  marginBottom: "0.9rem",
                 }}
               />
 
@@ -241,7 +254,7 @@ export default function QuoteCarousel() {
           alignItems: "center",
           justifyContent: "center",
           gap: "1.5rem",
-          marginTop: "3.5rem",
+          marginTop: "2.5rem",
           position: "relative",
           zIndex: 3,
         }}
@@ -324,7 +337,7 @@ export default function QuoteCarousel() {
         </button>
       </div>
 
-      {/* ── suppress scrollbar on WebKit */}
+      {/* suppress scrollbar on WebKit */}
       <style>{`
         .quote-track::-webkit-scrollbar { display: none; }
       `}</style>
